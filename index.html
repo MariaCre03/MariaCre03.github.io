@@ -58,6 +58,8 @@
         --header-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
         --chip-bg: #f1f5f9;
         --code-bg: #f1f5f9;
+        --gold-badge: #d97706;
+        --gold-bg: #fef3c7;
       }
 
       [data-theme="dark"] {
@@ -75,6 +77,8 @@
         --header-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
         --chip-bg: #1e293b;
         --code-bg: #1e293b;
+        --gold-badge: #fbbf24;
+        --gold-bg: rgba(251, 191, 36, 0.15);
       }
 
       * {
@@ -525,9 +529,9 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        padding: 5px 12px;
+        padding: 6px 14px;
         border-radius: 999px;
-        font-size: 0.78rem;
+        font-size: 0.8rem;
         font-weight: 600;
         text-decoration: none;
         cursor: pointer;
@@ -560,34 +564,95 @@
         color: var(--text-primary);
       }
 
-      /* Education Timeline */
+      /* Education Timeline & Degree Cards */
       .edu-timeline {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 18px;
       }
       .edu-card {
-        padding: 14px 18px;
+        padding: 18px 20px;
         background: var(--chip-bg);
-        border-radius: 12px;
+        border-radius: 14px;
         border: 1px solid var(--border-color);
+        border-left: 4px solid var(--primary);
+      }
+      .edu-header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 8px;
       }
       .edu-card-degree {
-        font-size: 0.96rem;
+        font-size: 1rem;
         font-weight: 700;
         color: var(--text-primary);
+      }
+      .badge-grade {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: var(--gold-bg);
+        color: var(--gold-badge);
+        font-size: 0.76rem;
+        font-weight: 700;
+        padding: 3px 9px;
+        border-radius: 6px;
       }
       .edu-card-inst {
         font-size: 0.88rem;
         color: var(--text-secondary);
-        margin-top: 2px;
+        margin-top: 3px;
       }
       .edu-card-date {
-        display: inline-block;
-        font-size: 0.75rem;
+        font-size: 0.76rem;
         font-weight: 600;
         color: var(--primary);
         margin-top: 4px;
+      }
+      .edu-thesis-box {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed var(--border-color);
+        font-size: 0.86rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+      }
+      .edu-thesis-title {
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      /* Technical Highlights */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 14px;
+        margin-top: 14px;
+      }
+      .skill-block {
+        background: var(--chip-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 14px 16px;
+      }
+      .skill-block-title {
+        font-size: 0.86rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .skill-block-title i {
+        color: var(--primary);
+      }
+      .skill-block-tags {
+        font-size: 0.82rem;
+        color: var(--text-secondary);
+        line-height: 1.45;
       }
 
       /* Footer */
@@ -609,7 +674,7 @@
           position: static;
         }
         .nav-menu {
-          display: none; /* simple mobile view */
+          display: none;
         }
         .pub-card-custom {
           grid-template-columns: 1fr;
@@ -633,9 +698,9 @@
         <ul class="nav-menu">
           <li><a href="#about">About</a></li>
           <li><a href="#research">Research</a></li>
-          <li><a href="#news">News</a></li>
           <li><a href="#publications">Publications</a></li>
-          <li><a href="#education">Education</a></li>
+          <li><a href="#education">Education &amp; Theses</a></li>
+          <li><a href="#news">News</a></li>
         </ul>
 
         <button type="button" class="theme-btn" id="theme-btn" aria-label="Toggle dark/light mode" title="Cambia tema chiaro/scuro">
@@ -668,14 +733,14 @@
         </a>
 
         <div class="social-row">
-          <!-- Google Scholar -->
-          <a href="https://scholar.google.com/" target="_blank" rel="noopener" title="Google Scholar">
-            <i class="ai ai-google-scholar"></i>
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/maria-creanza-154351224" target="_blank" rel="noopener" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
           </a>
 
-          <!-- Download CV -->
-          <a href="./assets/files/curriculum_vitae.pdf" download title="Download CV">
-            <i class="ai ai-cv"></i>
+          <!-- ORCID -->
+          <a href="https://orcid.org/0009-0006-5669-0508" target="_blank" rel="noopener" title="ORCID Profile">
+            <i class="ai ai-orcid"></i>
           </a>
 
           <!-- GitHub -->
@@ -683,9 +748,9 @@
             <i class="fab fa-github"></i>
           </a>
 
-          <!-- LinkedIn -->
-          <a href="https://www.linkedin.com/" target="_blank" rel="noopener" title="LinkedIn">
-            <i class="fab fa-linkedin-in"></i>
+          <!-- Google Scholar -->
+          <a href="https://scholar.google.com/" target="_blank" rel="noopener" title="Google Scholar">
+            <i class="ai ai-google-scholar"></i>
           </a>
         </div>
       </aside>
@@ -721,7 +786,7 @@
                 1. Learning under Limited Labeled Data
               </div>
               <p class="pillar-desc">
-                Overcoming clinical annotation scarcity through benchmarked comparative analyses of <em>self-supervised learning</em>, <em>semi-supervised learning</em>, <em>transfer learning</em>, and modern <em>foundation models</em>.
+                Overcoming clinical annotation scarcity through benchmarked comparative analyses of <em>self-supervised learning (SSL)</em>, <em>semi-supervised learning</em>, <em>transfer learning</em>, and modern <em>foundation models</em> on physiological time-series (e.g. HRV, EDA).
               </p>
             </div>
 
@@ -731,7 +796,7 @@
                 2. Multimodal Learning &amp; Sensor Fusion
               </div>
               <p class="pillar-desc">
-                Investigating the distinct predictive contributions of multiple data modalities (physiological, acoustic, behavioral, contextual) and formulating advanced multimodal fusion architectures.
+                Investigating the distinct predictive contributions of multiple data modalities (physiological, acoustic, behavioral, contextual) and formulating advanced multimodal fusion architectures capable of handling asynchronous and heterogeneous data flows.
               </p>
             </div>
 
@@ -741,29 +806,156 @@
                 3. Explainable &amp; Trustworthy AI (XAI)
               </div>
               <p class="pillar-desc">
-                Bridging the black-box gap by comparing post-hoc explainability techniques with intrinsically interpretable models (including fuzzy linguistic representations), validated through human-centered studies involving clinical specialists.
+                Bridging the black-box gap by comparing post-hoc explainability techniques (LIME, SHAP, counterfactuals) with intrinsically interpretable models (such as fuzzy linguistic representations), validated through human-centered studies involving clinical specialists.
               </p>
             </div>
           </div>
 
           <p style="margin-top: 14px;">
-            The overarching goal is to formulate a unified methodological framework for reliable, robust, and transparent AI systems in continuous mental health monitoring, advancing their translation into clinical practice.
+            The overarching goal is to formulate a unified methodological framework for designing reliable, robust, and transparent AI systems for continuous mental health monitoring, advancing their translation into clinical practice.
           </p>
         </section>
 
         <!-- Research Interests Card -->
         <section id="research" class="content-card">
           <h2 class="section-title">
-            <i class="fas fa-compass"></i>Research Interests
+            <i class="fas fa-compass"></i>Research Interests &amp; Focus
           </h2>
           <div class="tags-wrap">
             <span class="interest-tag"><i class="fas fa-heartbeat"></i>Digital Mental Health (DMH)</span>
             <span class="interest-tag"><i class="fas fa-lightbulb"></i>Explainable AI (XAI)</span>
             <span class="interest-tag"><i class="fas fa-project-diagram"></i>Fuzzy Linguistic Models</span>
             <span class="interest-tag"><i class="fas fa-microphone-alt"></i>Acoustic &amp; Vocal Biomarkers</span>
-            <span class="interest-tag"><i class="fas fa-layer-group"></i>Multimodal Data Fusion</span>
+            <span class="interest-tag"><i class="fas fa-wave-square"></i>Physiological Biosignals (HRV, EDA)</span>
+            <span class="interest-tag"><i class="fas fa-layer-group"></i>Multimodal Sensor Fusion</span>
+            <span class="interest-tag"><i class="fas fa-cogs"></i>Self-Supervised Learning (SSL)</span>
             <span class="interest-tag"><i class="fas fa-shield-alt"></i>Trustworthy &amp; Human-in-the-Loop AI</span>
-            <span class="interest-tag"><i class="fas fa-chart-line"></i>Wearable Sensor Analytics</span>
+          </div>
+
+          <div class="skills-grid">
+            <div class="skill-block">
+              <div class="skill-block-title">
+                <i class="fas fa-laptop-code"></i>Deep Learning &amp; AI
+              </div>
+              <div class="skill-block-tags">
+                PyTorch, Transformers, State Space Models, Scikit-Learn, Self-Supervised Learning, LIME, SHAP, Fuzzy Logic
+              </div>
+            </div>
+
+            <div class="skill-block">
+              <div class="skill-block-title">
+                <i class="fas fa-robot"></i>Generative AI &amp; NLP
+              </div>
+              <div class="skill-block-tags">
+                LangChain, FAISS (Vector Stores), Ragas evaluation, Embeddings, BERT, Python
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Featured Publications Card -->
+        <section id="publications" class="content-card">
+          <h2 class="section-title">
+            <i class="fas fa-book-open"></i>Publications
+          </h2>
+
+          <div class="pub-card-custom">
+            <div class="pub-teaser-wrap">
+              <img src="./assets/img/parkinson_fuzzy.png" alt="Parkinson Fuzzy Linguistic Representation" class="pub-teaser-img" />
+              <div class="pub-venue-badge">AIPHEA @ IEEE WCCI 2026</div>
+            </div>
+
+            <div class="pub-content">
+              <div class="pub-title">
+                Explaining Unsupervised Acoustic Patterns in Parkinson’s Patients’ Speech through Fuzzy Linguistic Representations
+              </div>
+              <div class="pub-authors">
+                Gabriella Casalino, Giovanna Castellano, <strong>Maria Creanza*</strong>, Katarzyna Kaczmarek-Majer, Gianluca Zaza
+              </div>
+              <div class="pub-venue">
+                1st Workshop on AI in Predictive HEAltH: architectures for prevention <strong>(AIPHEA 2026)</strong>, co-located with 2026 IEEE World Congress on Computational Intelligence <strong>(IEEE WCCI 2026)</strong>, Maastricht, The Netherlands, June 21-26, 2026. CEUR Workshop Proceedings (to appear).
+              </div>
+              <div class="pub-abstract">
+                <strong>Abstract:</strong> Speech-based analysis is a powerful tool for investigating Parkinson's disease, yet unsupervised representations often lack interpretability in medical settings. This paper presents an interpretable unsupervised framework combining Non-Negative Matrix Factorization (NMF) with fuzzy linguistic modeling. By translating latent acoustic factors and sample contributions into perceptual linguistic concepts, the framework provides transparent, multi-level explanations (latent factors, clusters, and individual speech recordings) without enforcing rigid class boundaries.
+              </div>
+              <div class="action-btns">
+                <a href="./assets/files/explaining_unsupervised_acoustic_patterns.pdf" target="_blank" class="btn-pill btn-accent">
+                  <i class="fas fa-file-pdf"></i>PDF (Full Paper)
+                </a>
+                <button type="button" class="btn-pill" onclick="toggleBibtex('bib-parkinson')">
+                  <i class="fas fa-quote-right"></i>BibTeX
+                </button>
+              </div>
+
+              <div id="bib-parkinson" class="bibtex-toggle-box">@inproceedings{casalino2026explaining,
+  title     = {Explaining Unsupervised Acoustic Patterns in Parkinson's Patients' Speech through Fuzzy Linguistic Representations},
+  author    = {Casalino, Gabriella and Castellano, Giovanna and Creanza, Maria and Kaczmarek-Majer, Katarzyna and Zaza, Gianluca},
+  booktitle = {Proceedings of the 1st Workshop on AI in Predictive HEAltH: Architectures for Prevention (AIPHEA 2026) co-located with IEEE WCCI 2026},
+  series    = {CEUR Workshop Proceedings},
+  year      = {2026},
+  address   = {Maastricht, The Netherlands}
+}</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Education & Theses Card -->
+        <section id="education" class="content-card">
+          <h2 class="section-title">
+            <i class="fas fa-graduation-cap"></i>Education &amp; Theses
+          </h2>
+
+          <div class="edu-timeline">
+            <!-- PhD -->
+            <div class="edu-card">
+              <div class="edu-header-row">
+                <div class="edu-card-degree">Ph.D. in Digital Innovation and e-Health</div>
+                <div class="edu-card-date"><i class="far fa-calendar-alt" style="margin-right: 4px;"></i>Oct 2026 – Present</div>
+              </div>
+              <div class="edu-card-inst">University of Bari Aldo Moro, Italy</div>
+              <div class="edu-thesis-box">
+                <div><strong>Research Project:</strong> <em>Digital Mental Health Monitoring via Explainable Artificial Intelligence</em></div>
+                <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">Affiliated with the Computational Intelligence Laboratory (CILAB).</div>
+              </div>
+            </div>
+
+            <!-- MSc -->
+            <div class="edu-card">
+              <div class="edu-header-row">
+                <div class="edu-card-degree">M.Sc. in Computer Science (Artificial Intelligence track)</div>
+                <span class="badge-grade"><i class="fas fa-award"></i>110/110 con Lode</span>
+              </div>
+              <div class="edu-card-inst">University of Bari Aldo Moro, Italy</div>
+              <div class="edu-card-date"><i class="far fa-calendar-check" style="margin-right: 4px;"></i>Graduated: July 2026</div>
+              <div class="edu-thesis-box">
+                <div class="edu-thesis-title">Master's Thesis: Study and Implementation of Machine Learning Techniques for Mental Health Monitoring and Assessment</div>
+                <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">
+                  <strong>Supervisors:</strong> Dr. Gabriella Casalino, Prof. Gennaro Vessio, Dr. Gianluca Zaza
+                </div>
+                <p style="font-size: 0.83rem; margin: 4px 0 0 0;">
+                  Investigated Self-Supervised Learning (SSL) and modern sequence models (Transformers, State Space Models) for continuous stress detection and mood monitoring using wearable biosignal time-series (HRV, EDA) and Explainable AI.
+                </p>
+              </div>
+            </div>
+
+            <!-- BSc -->
+            <div class="edu-card">
+              <div class="edu-header-row">
+                <div class="edu-card-degree">B.Sc. in Computer Science and Software Technologies (ITPS)</div>
+                <span class="badge-grade" style="background: var(--chip-bg); color: var(--text-secondary);"><i class="fas fa-check-circle"></i>101/110</span>
+              </div>
+              <div class="edu-card-inst">Informatica e Tecnologie per la Produzione del Software &bull; University of Bari Aldo Moro, Italy</div>
+              <div class="edu-card-date"><i class="far fa-calendar-check" style="margin-right: 4px;"></i>Graduated: October 2024</div>
+              <div class="edu-thesis-box">
+                <div class="edu-thesis-title">Bachelor's Thesis: Applicazione di Modelli di Vision Transformer per la Predizione dell'Anemia su Dataset Eterogenei</div>
+                <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">
+                  <strong>Supervisors:</strong> Prof. Giovanni Dimauro, Dr. Nunzia Lomonte
+                </div>
+                <p style="font-size: 0.83rem; margin: 4px 0 0 0;">
+                  Designed a non-invasive screening pipeline using Vision Transformers (ViT) on palpebral conjunctiva photography across heterogeneous international cohorts, achieving 82% accuracy in binary anemia classification.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -783,7 +975,7 @@
             <div class="news-entry">
               <div class="news-date-badge">July 2026</div>
               <div class="news-body">
-                Graduated with an <strong>M.Sc. in Computer Science (Artificial Intelligence track)</strong> from the University of Bari Aldo Moro.
+                Graduated with an <strong>M.Sc. in Computer Science (Artificial Intelligence track)</strong> from the University of Bari Aldo Moro with <strong>110/110 con Lode</strong>!
               </div>
             </div>
 
@@ -793,79 +985,6 @@
                 Our paper <em>"Explaining Unsupervised Acoustic Patterns in Parkinson’s Patients’ Speech through Fuzzy Linguistic Representations"</em> 
                 has been accepted for presentation at <strong>AIPHEA 2026</strong> (co-located with <strong>IEEE WCCI 2026</strong>) in Maastricht, The Netherlands, and will appear in the <strong>CEUR Workshop Proceedings</strong>!
               </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Featured Publications Card -->
-        <section id="publications" class="content-card">
-          <h2 class="section-title">
-            <i class="fas fa-book-open"></i>Featured Publications
-          </h2>
-
-          <div class="pub-card-custom">
-            <div class="pub-teaser-wrap">
-              <img src="./assets/img/parkinson_fuzzy.png" alt="Parkinson Fuzzy Linguistic Representation" class="pub-teaser-img" />
-              <div class="pub-venue-badge">AIPHEA @ IEEE WCCI 2026</div>
-            </div>
-
-            <div class="pub-content">
-              <div class="pub-title">
-                Explaining Unsupervised Acoustic Patterns in Parkinson’s Patients’ Speech through Fuzzy Linguistic Representations
-              </div>
-              <div class="pub-authors">
-                Gabriella Casalino, Giovanna Castellano, <strong>Maria Creanza*</strong>, Katarzyna Kaczmarek-Majer, Gianluca Zaza
-              </div>
-              <div class="pub-venue">
-                1st Workshop on AI in Predictive HEAltH (AIPHEA 2026), in conjunction with the 2026 IEEE World Congress on Computational Intelligence (IEEE WCCI 2026), Maastricht, The Netherlands. CEUR Workshop Proceedings (to appear), 2026.
-              </div>
-              <div class="pub-abstract">
-                We propose an explainable framework for analyzing unsupervised acoustic patterns in speech recordings of Parkinson's disease patients using fuzzy linguistic representations. Transforming high-dimensional acoustic feature spaces into human-understandable linguistic sets enables transparent clinical interpretability while preserving descriptive richness.
-              </div>
-              <div class="action-btns">
-                <span class="btn-pill btn-accent">
-                  <i class="fas fa-file-pdf"></i>CEUR Proceedings (to appear)
-                </span>
-                <button type="button" class="btn-pill" onclick="toggleBibtex('bib-parkinson')">
-                  <i class="fas fa-quote-right"></i>BibTeX
-                </button>
-              </div>
-
-              <div id="bib-parkinson" class="bibtex-toggle-box">@inproceedings{creanza2026explaining,
-  title     = {Explaining Unsupervised Acoustic Patterns in Parkinson's Patients' Speech through Fuzzy Linguistic Representations},
-  author    = {Casalino, Gabriella and Castellano, Giovanna and Creanza, Maria and Kaczmarek-Majer, Katarzyna and Zaza, Gianluca},
-  booktitle = {Proceedings of the 1st Workshop on AI in Predictive HEAltH: Architectures for Prevention (AIPHEA 2026) co-located with IEEE WCCI 2026},
-  series    = {CEUR Workshop Proceedings},
-  year      = {2026},
-  address   = {Maastricht, The Netherlands}
-}</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Education Card -->
-        <section id="education" class="content-card">
-          <h2 class="section-title">
-            <i class="fas fa-graduation-cap"></i>Education
-          </h2>
-
-          <div class="edu-timeline">
-            <div class="edu-card">
-              <div class="edu-card-degree">Ph.D. in Digital Innovation and e-Health</div>
-              <div class="edu-card-inst">University of Bari Aldo Moro, Italy</div>
-              <div class="edu-card-date"><i class="far fa-calendar-alt" style="margin-right: 4px;"></i>Started: October 2026 – Present</div>
-            </div>
-
-            <div class="edu-card">
-              <div class="edu-card-degree">M.Sc. in Computer Science (Artificial Intelligence track)</div>
-              <div class="edu-card-inst">University of Bari Aldo Moro, Italy</div>
-              <div class="edu-card-date"><i class="far fa-calendar-check" style="margin-right: 4px;"></i>Graduated: July 2026</div>
-            </div>
-
-            <div class="edu-card">
-              <div class="edu-card-degree">B.Sc. in Computer Science and Software Technologies (ITPS)</div>
-              <div class="edu-card-inst">Informatica e Tecnologie per la Produzione del Software &bull; University of Bari Aldo Moro, Italy</div>
-              <div class="edu-card-date"><i class="far fa-calendar-check" style="margin-right: 4px;"></i>Graduated: October 2024</div>
             </div>
           </div>
         </section>
