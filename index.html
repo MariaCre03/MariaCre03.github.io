@@ -33,114 +33,649 @@
       })();
     </script>
 
-    <!-- Icons & Fonts -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="./assets/css/font_sans_serif.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/publications-no-dark-mode.css">
-    <link rel="stylesheet" href="./assets/css/publications.css">
-
     <style>
-      .bibtex-box {
-        display: none;
-        margin-top: 10px;
-        padding: 10px 14px;
-        background: #f6f8fa;
-        border: 1px solid #d0d7de;
-        border-radius: 6px;
-        font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-        font-size: 0.78rem;
-        line-height: 1.45;
-        white-space: pre-wrap;
-        word-break: break-all;
-        color: #24292f;
+      :root {
+        --bg-body: #f8fafc;
+        --bg-card: #ffffff;
+        --text-primary: #1e293b;
+        --text-secondary: #475569;
+        --text-muted: #64748b;
+        --primary: #006677;
+        --primary-hover: #004d5a;
+        --primary-light: #e0f2f1;
+        --accent: #0284c7;
+        --border-color: #e2e8f0;
+        --card-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.06);
+        --header-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        --chip-bg: #f1f5f9;
+        --code-bg: #f1f5f9;
       }
-      [data-theme="dark"] .bibtex-box {
-        background: #1c1d25;
-        border-color: #3a3b47;
-        color: #c9cad2;
+
+      [data-theme="dark"] {
+        --bg-body: #0b1120;
+        --bg-card: #131c31;
+        --text-primary: #f1f5f9;
+        --text-secondary: #cbd5e1;
+        --text-muted: #94a3b8;
+        --primary: #2dd4bf;
+        --primary-hover: #5eead4;
+        --primary-light: rgba(45, 212, 191, 0.12);
+        --accent: #38bdf8;
+        --border-color: #1e293b;
+        --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.35);
+        --header-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        --chip-bg: #1e293b;
+        --code-bg: #1e293b;
       }
-      .badge-gold {
-        background: #043361;
-        color: #fff;
-        font-size: 0.72rem;
-        padding: 3px 8px;
-        border-radius: 4px;
-        font-weight: 600;
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-body);
+        color: var(--text-primary);
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 15px;
+        line-height: 1.65;
+        transition: background-color 0.25s ease, color 0.25s ease;
+      }
+
+      /* Sticky Top Navigation Bar */
+      .top-navbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border-color);
+        transition: background 0.25s ease, border-color 0.25s ease;
+      }
+      [data-theme="dark"] .top-navbar {
+        background: rgba(11, 17, 32, 0.88);
+      }
+
+      .nav-container {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 10px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-brand {
+        font-weight: 700;
+        font-size: 1.12rem;
+        color: var(--text-primary);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .nav-brand span {
+        color: var(--primary);
+      }
+
+      .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .nav-menu a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+      .nav-menu a:hover {
+        color: var(--primary);
+      }
+
+      /* Theme Toggle Button */
+      .theme-btn {
+        background: var(--chip-bg);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 0.95rem;
+        transition: all 0.2s ease;
+      }
+      .theme-btn:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        transform: rotate(15deg);
+      }
+      [data-theme="dark"] .theme-btn .fa-moon { display: none; }
+      [data-theme="dark"] .theme-btn .fa-sun { display: inline-block; color: #facc15; }
+      html:not([data-theme="dark"]) .theme-btn .fa-sun { display: none; }
+      html:not([data-theme="dark"]) .theme-btn .fa-moon { display: inline-block; }
+
+      /* Main Page Wrapper */
+      .page-wrapper {
+        max-width: 1080px;
+        margin: 32px auto 60px;
+        padding: 0 24px;
+        display: grid;
+        grid-template-columns: 310px 1fr;
+        gap: 36px;
+        align-items: start;
+      }
+
+      /* Profile Sidebar Card */
+      .sidebar {
+        position: sticky;
+        top: 80px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        padding: 32px 24px;
+        text-align: center;
+        box-shadow: var(--card-shadow);
+        transition: background 0.25s ease, border-color 0.25s ease;
+      }
+
+      .avatar-wrapper {
+        position: relative;
+        width: 168px;
+        height: 168px;
+        margin: 0 auto 18px;
+      }
+      .avatar-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--primary);
+        box-shadow: 0 6px 16px rgba(0, 102, 119, 0.15);
+      }
+      [data-theme="dark"] .avatar-img {
+        box-shadow: 0 6px 20px rgba(45, 212, 191, 0.25);
+      }
+
+      .sidebar h1 {
+        font-size: 1.45rem;
+        font-weight: 700;
+        margin: 0 0 6px 0;
+        color: var(--text-primary);
+        letter-spacing: -0.02em;
+      }
+
+      .badge-role {
         display: inline-block;
-        margin-top: 6px;
+        background: var(--primary-light);
+        color: var(--primary);
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 999px;
+        margin-bottom: 12px;
+        line-height: 1.35;
       }
-      [data-theme="dark"] .badge-gold {
-        background: #3eb7f0;
-        color: #20212b;
+
+      .affiliation {
+        font-size: 0.92rem;
+        color: var(--text-secondary);
+        margin-bottom: 6px;
       }
-      .edu-item {
-        margin-bottom: 18px;
+      .affiliation a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.2s ease;
       }
-      .edu-year {
+      .affiliation a:hover {
+        color: var(--primary);
+      }
+
+      .email-link {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.8rem;
+        color: var(--primary);
+        text-decoration: none;
+        word-break: break-all;
+        display: inline-block;
+        margin-top: 4px;
+        padding: 2px 6px;
+        background: var(--chip-bg);
+        border-radius: 6px;
+        transition: all 0.2s ease;
+      }
+      .email-link:hover {
+        background: var(--primary-light);
+      }
+
+      .social-row {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 22px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color);
+      }
+      .social-row a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: var(--chip-bg);
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        text-decoration: none;
+        border: 1px solid var(--border-color);
+        transition: all 0.2s ease;
+      }
+      .social-row a:hover {
+        background: var(--primary);
+        color: #ffffff !important;
+        border-color: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      /* Main Content Column */
+      .content-column {
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
+      }
+
+      .content-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        padding: 32px;
+        box-shadow: var(--card-shadow);
+        transition: background 0.25s ease, border-color 0.25s ease;
+      }
+
+      .section-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0 0 16px 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        letter-spacing: -0.02em;
+      }
+      .section-title i {
+        color: var(--primary);
+        font-size: 1.15rem;
+      }
+
+      p {
+        margin: 0 0 16px 0;
+        color: var(--text-secondary);
+      }
+      p:last-child {
+        margin-bottom: 0;
+      }
+      strong {
+        color: var(--text-primary);
+      }
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* Research Pillars Grid */
+      .pillars-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin: 18px 0 12px 0;
+      }
+      .pillar-item {
+        background: var(--chip-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 16px 18px;
+        border-left: 4px solid var(--primary);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .pillar-item:hover {
+        transform: translateX(3px);
+      }
+      .pillar-title {
+        font-weight: 700;
+        color: var(--text-primary);
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .pillar-desc {
+        font-size: 0.88rem;
+        color: var(--text-secondary);
+        margin: 0;
+        line-height: 1.5;
+      }
+
+      /* Interest Tags */
+      .tags-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+      }
+      .interest-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 12px;
+        background: var(--chip-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 999px;
         font-size: 0.82rem;
-        color: #666;
+        color: var(--text-secondary);
         font-weight: 500;
       }
-      [data-theme="dark"] .edu-year {
-        color: #9a9ba3;
+      .interest-tag i {
+        color: var(--primary);
+        font-size: 0.78rem;
       }
-      .edu-degree {
+
+      /* News List */
+      .news-timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .news-entry {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding-bottom: 14px;
+        border-bottom: 1px dashed var(--border-color);
+      }
+      .news-entry:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+      .news-date-badge {
+        background: var(--primary);
+        color: #ffffff;
+        font-size: 0.72rem;
         font-weight: 600;
-        color: #043361;
-        font-size: 0.98rem;
+        padding: 4px 10px;
+        border-radius: 6px;
+        white-space: nowrap;
+        text-align: center;
+        min-width: 95px;
       }
-      [data-theme="dark"] .edu-degree {
-        color: #3eb7f0;
+      [data-theme="dark"] .news-date-badge {
+        color: #0b1120;
       }
-      .edu-institution {
-        font-size: 0.9rem;
-        color: #444;
+      .news-body {
+        font-size: 0.92rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
       }
-      [data-theme="dark"] .edu-institution {
-        color: #dadbdf;
+
+      /* Publication Card */
+      .pub-card-custom {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 20px;
+        background: var(--chip-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 18px;
+        align-items: start;
+        transition: box-shadow 0.2s ease, border-color 0.2s ease;
       }
-      .project-pillars {
-        margin: 10px 0 16px 15px;
-        padding-left: 10px;
+      .pub-card-custom:hover {
+        border-color: var(--primary);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
       }
-      .project-pillars li {
-        margin-bottom: 8px;
+      .pub-teaser-wrap {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        background: #fff;
+      }
+      .pub-teaser-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+      }
+      .pub-venue-badge {
+        position: absolute;
+        bottom: 8px;
+        left: 8px;
+        right: 8px;
+        background: rgba(0, 0, 0, 0.78);
+        color: #ffffff;
+        font-size: 0.65rem;
+        font-weight: 600;
+        padding: 3px 6px;
+        border-radius: 4px;
+        text-align: center;
+        backdrop-filter: blur(4px);
+      }
+
+      .pub-content .pub-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1.4;
+        margin-bottom: 6px;
+      }
+      .pub-content .pub-authors {
+        font-size: 0.88rem;
+        color: var(--text-secondary);
+        margin-bottom: 6px;
+      }
+      .pub-content .pub-venue {
+        font-size: 0.84rem;
+        color: var(--text-muted);
+        font-style: italic;
+        margin-bottom: 10px;
+      }
+      .pub-content .pub-abstract {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        background: var(--bg-card);
+        border-left: 3px solid var(--primary);
+        padding: 8px 12px;
+        border-radius: 0 8px 8px 0;
+        margin-bottom: 12px;
+        line-height: 1.5;
+      }
+
+      .action-btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .btn-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 12px;
+        border-radius: 999px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        border: 1px solid var(--border-color);
+        background: var(--bg-card);
+        color: var(--text-primary);
+        transition: all 0.2s ease;
+      }
+      .btn-pill:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+      .btn-pill.btn-accent {
+        background: var(--primary-light);
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+
+      .bibtex-toggle-box {
+        display: none;
+        margin-top: 12px;
+        padding: 12px;
+        background: var(--code-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.74rem;
+        white-space: pre-wrap;
+        word-break: break-all;
+        color: var(--text-primary);
+      }
+
+      /* Education Timeline */
+      .edu-timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .edu-card {
+        padding: 14px 18px;
+        background: var(--chip-bg);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+      }
+      .edu-card-degree {
+        font-size: 0.96rem;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+      .edu-card-inst {
+        font-size: 0.88rem;
+        color: var(--text-secondary);
+        margin-top: 2px;
+      }
+      .edu-card-date {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--primary);
+        margin-top: 4px;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 24px;
+        color: var(--text-muted);
+        font-size: 0.8rem;
+      }
+
+      /* Responsive Breakpoints */
+      @media (max-width: 900px) {
+        .page-wrapper {
+          grid-template-columns: 1fr;
+          gap: 24px;
+          margin-top: 20px;
+        }
+        .sidebar {
+          position: static;
+        }
+        .nav-menu {
+          display: none; /* simple mobile view */
+        }
+        .pub-card-custom {
+          grid-template-columns: 1fr;
+        }
+        .pub-teaser-wrap {
+          max-width: 320px;
+          margin: 0 auto;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="wrapper">
-      <!-- Left Profile Header -->
-      <header>
-        <a class="image avatar">
-          <img src="./assets/img/avatar.png" alt="Portrait of Maria Creanza" />
+
+    <!-- Top Sticky Header -->
+    <header class="top-navbar">
+      <div class="nav-container">
+        <a href="#" class="nav-brand">
+          <span>Maria</span> Creanza
         </a>
+
+        <ul class="nav-menu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#education">Education</a></li>
+        </ul>
+
+        <button type="button" class="theme-btn" id="theme-btn" aria-label="Toggle dark/light mode" title="Cambia tema chiaro/scuro">
+          <i class="fas fa-moon"></i>
+          <i class="fas fa-sun"></i>
+        </button>
+      </div>
+    </header>
+
+    <div class="page-wrapper">
+      <!-- Left Sidebar: Profile Card -->
+      <aside class="sidebar">
+        <div class="avatar-wrapper">
+          <img src="./assets/img/avatar.png" alt="Maria Creanza" class="avatar-img" />
+        </div>
 
         <h1>Maria Creanza</h1>
+        <div class="badge-role">Ph.D. Student in Digital Innovation &amp; e-Health</div>
 
-        <div style="font-size: 1.05rem; font-weight: 500; margin-top: -6px; margin-bottom: 4px;">
-          Ph.D. Student in Digital Innovation &amp; e-Health
+        <div class="affiliation">
+          <a href="https://www.uniba.it/" target="_blank" rel="noopener">
+            <strong>University of Bari Aldo Moro</strong>
+          </a>
+          <br>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Dept. of Computer Science &bull; CILAB</span>
         </div>
-        <a href="https://www.uniba.it/" target="_blank" rel="noopener">
-          <autocolor>University of Bari Aldo Moro</autocolor>
-        </a>
-        <br>
-        <a href="mailto:m.creanza6@phd.uniba.it" class="email">m.creanza6@phd.uniba.it</a>
 
-        <br><br>
-        <div class="social-icons">
+        <a href="mailto:m.creanza6@phd.uniba.it" class="email-link">
+          <i class="fas fa-envelope" style="margin-right: 4px;"></i>m.creanza6@phd.uniba.it
+        </a>
+
+        <div class="social-row">
           <!-- Google Scholar -->
           <a href="https://scholar.google.com/" target="_blank" rel="noopener" title="Google Scholar">
-            <i class="ai ai-google-scholar" style="font-size: 1.25rem"></i>
+            <i class="ai ai-google-scholar"></i>
           </a>
 
           <!-- Download CV -->
           <a href="./assets/files/curriculum_vitae.pdf" download title="Download CV">
-            <i class="ai ai-cv" style="font-size: 1.3rem;"></i>
+            <i class="ai ai-cv"></i>
           </a>
 
           <!-- GitHub -->
@@ -150,127 +685,153 @@
 
           <!-- LinkedIn -->
           <a href="https://www.linkedin.com/" target="_blank" rel="noopener" title="LinkedIn">
-            <i class="fab fa-linkedin"></i>
+            <i class="fab fa-linkedin-in"></i>
           </a>
-
-          <!-- Dark / Light Mode Toggle Button -->
-          <button type="button" class="theme-toggle" aria-pressed="false"
-                  title="Switch to dark mode" aria-label="Switch to dark mode" hidden>
-            <i class="fas fa-moon theme-toggle__moon" aria-hidden="true"></i>
-            <i class="fas fa-sun theme-toggle__sun" aria-hidden="true"></i>
-          </button>
         </div>
-        <br>
-      </header>
+      </aside>
 
-      <!-- Main Content Column -->
-      <section>
-        <div class="intro">
-          <h2 id="about-me">About me</h2>
+      <!-- Main Column -->
+      <main class="content-column">
+
+        <!-- About Me Card -->
+        <section id="about" class="content-card">
+          <h2 class="section-title">
+            <i class="fas fa-user-circle"></i>About Me
+          </h2>
 
           <p>
-            I am a Ph.D. student in <strong>Digital Innovation and e-Health</strong> at the 
-            <a href="https://www.uniba.it/" target="_blank" rel="noopener">University of Bari Aldo Moro</a>, affiliated with the 
-            <a href="https://cilab.di.uniba.it/" target="_blank" rel="noopener">Computational Intelligence Laboratory (CILAB)</a>, 
-            Department of Computer Science.
+            I am a Ph.D. student in <strong>Digital Innovation and e-Health</strong> (started in <strong>October 2026</strong>) at the 
+            <a href="https://www.uniba.it/" target="_blank" rel="noopener">University of Bari Aldo Moro</a>, conducting research within the 
+            <a href="https://cilab.di.uniba.it/" target="_blank" rel="noopener">Computational Intelligence Laboratory (CILAB)</a> at the Department of Computer Science.
           </p>
 
           <p>
-            Clinical assessment in mental health still relies predominantly on episodic evaluations and standardized psychometric questionnaires, offering only a partial snapshot of an individual's condition. <strong>Digital Mental Health (DMH)</strong> opens new avenues for continuous, non-invasive monitoring through wearable devices and digital technologies capable of acquiring physiological, behavioral, acoustic, and contextual biomarkers.
+            My research is centered around <strong>Artificial Intelligence for Digital Mental Health (DMH)</strong>. Traditional psychiatric and clinical assessments still rely predominantly on episodic visits and standardized psychometric questionnaires, providing only an incomplete, episodic snapshot of an individual's mental state. Digital Mental Health opens the transformative opportunity for <em>continuous, ecologically valid monitoring</em> via wearable sensors and digital technologies capable of acquiring physiological, behavioral, acoustic, and contextual biomarkers.
           </p>
 
           <p>
-            My doctoral research focuses on developing advanced <strong>Artificial Intelligence methodologies for Digital Mental Health</strong>, addressing the critical challenges that hinder clinical adoption through three primary directions:
+            While AI offers tremendous promise for analyzing these heterogeneous, high-dimensional streams, its real-world clinical adoption faces major obstacles. My doctoral research is dedicated to addressing these through three core methodological pillars:
           </p>
 
-          <ol class="project-pillars">
-            <li>
-              <strong>Learning under Limited Labeled Data:</strong> benchmarking and developing modern learning paradigms such as <em>self-supervised learning</em>, <em>semi-supervised learning</em>, <em>transfer learning</em>, and <em>foundation models</em> to overcome clinical data scarcity.
-            </li>
-            <li>
-              <strong>Multimodal Learning and Data Fusion:</strong> analyzing the individual predictive power of distinct data modalities (physiological, acoustic, behavioral, contextual) and investigating optimal multimodal fusion strategies.
-            </li>
-            <li>
-              <strong>Explainable and Trustworthy AI (XAI):</strong> conducting comparative evaluations of post-hoc explainability methods and intrinsically interpretable models (such as fuzzy linguistic representations), coupled with human-centered evaluations actively involving clinicians.
-            </li>
-          </ol>
-
-          <p>
-            The ultimate objective is to define a comprehensive methodological framework for designing reliable, robust, and transparent AI systems for continuous mental health monitoring, advancing their effective clinical translation.
-          </p>
-
-          <h2 id="research-interests">Research interests</h2>
-          <ul>
-            <li><strong>Digital Mental Health (DMH) &amp; e-Health:</strong> Continuous monitoring with wearable sensors, digital biomarkers, physiological and acoustic speech analysis.</li>
-            <li><strong>Explainable &amp; Trustworthy AI (XAI):</strong> Intrinsically interpretable models, post-hoc explanations, fuzzy linguistic representations, human-in-the-loop clinical evaluation.</li>
-            <li><strong>Multimodal Learning:</strong> Sensor fusion, multimodal representation learning, learning under limited supervision (self-supervised, semi-supervised, transfer learning, foundation models).</li>
-          </ul>
-        </div>
-
-        <!-- News Section -->
-        <div class="full-bleed">
-          <h2 id="news">News</h2>
-          <div class="news-list" data-news-limit="5">
-            <div class="news-item">
-              <span class="news-date">October 2026</span>
-              <span>
-                Awarded admission to the Ph.D. program in <strong>Digital Innovation and e-Health</strong> at the University of Bari Aldo Moro!
-              </span>
+          <!-- 3 Research Pillars -->
+          <div class="pillars-grid">
+            <div class="pillar-item">
+              <div class="pillar-title">
+                <i class="fas fa-database" style="color: var(--primary);"></i>
+                1. Learning under Limited Labeled Data
+              </div>
+              <p class="pillar-desc">
+                Overcoming clinical annotation scarcity through benchmarked comparative analyses of <em>self-supervised learning</em>, <em>semi-supervised learning</em>, <em>transfer learning</em>, and modern <em>foundation models</em>.
+              </p>
             </div>
 
-            <div class="news-item">
-              <span class="news-date">July 2026</span>
-              <span>
-                Graduated with an <strong>M.Sc. in Computer Science (Artificial Intelligence track)</strong> from the University of Bari Aldo Moro.
-              </span>
+            <div class="pillar-item">
+              <div class="pillar-title">
+                <i class="fas fa-network-wired" style="color: var(--primary);"></i>
+                2. Multimodal Learning &amp; Sensor Fusion
+              </div>
+              <p class="pillar-desc">
+                Investigating the distinct predictive contributions of multiple data modalities (physiological, acoustic, behavioral, contextual) and formulating advanced multimodal fusion architectures.
+              </p>
             </div>
 
-            <div class="news-item">
-              <span class="news-date">July 2026</span>
-              <span>
-                Our paper <em>"Explaining Unsupervised Acoustic Patterns in Parkinson’s Patients’ Speech through Fuzzy Linguistic Representations"</em> 
-                has been accepted for presentation at <strong>AIPHEA 2026</strong> (co-located with <strong>IEEE WCCI 2026</strong>) in Maastricht, The Netherlands, and will appear in the <strong>CEUR Workshop Proceedings</strong>!
-                <span class="news-links">
-                  <a class="chip chip--web" href="https://aiphea2026.github.io/" target="_blank"><i class="fas fa-globe" aria-hidden="true"></i>Workshop</a>
-                  <a class="chip chip--pdf" href="#pub-parkinson"><i class="fas fa-file-alt" aria-hidden="true"></i>Details</a>
-                </span>
-              </span>
+            <div class="pillar-item">
+              <div class="pillar-title">
+                <i class="fas fa-brain" style="color: var(--primary);"></i>
+                3. Explainable &amp; Trustworthy AI (XAI)
+              </div>
+              <p class="pillar-desc">
+                Bridging the black-box gap by comparing post-hoc explainability techniques with intrinsically interpretable models (including fuzzy linguistic representations), validated through human-centered studies involving clinical specialists.
+              </p>
             </div>
           </div>
 
-          <!-- Publications Section -->
-          <h2 id="publications" style="margin: 2px 0px -15px;">Featured publications</h2>
+          <p style="margin-top: 14px;">
+            The overarching goal is to formulate a unified methodological framework for reliable, robust, and transparent AI systems in continuous mental health monitoring, advancing their translation into clinical practice.
+          </p>
+        </section>
 
-          <div class="publications">
-            <ol class="bibliography">
-              <li id="pub-parkinson">
-                <div class="pub-row">
-                  <div class="col-sm-3 abbr" style="position: relative; padding-right: 15px; padding-left: 15px;">
-                    <img src="./assets/img/parkinson_fuzzy.png" alt="Acoustic & Fuzzy Representation Teaser" class="teaser img-fluid z-depth-1" />
-                    <abbr class="badge">AIPHEA @ IEEE WCCI 2026</abbr>
-                  </div>
-                  <div class="col-sm-9" style="position: relative; padding-right: 15px; padding-left: 20px;">
-                    <div class="title">
-                      <a href="#pub-parkinson">Explaining Unsupervised Acoustic Patterns in Parkinson’s Patients’ Speech through Fuzzy Linguistic Representations</a>
-                    </div>
-                    <div class="author">
-                      Gabriella Casalino, Giovanna Castellano, <strong>Maria Creanza*</strong>, Katarzyna Kaczmarek-Majer, Gianluca Zaza
-                    </div>
-                    <div class="periodical">
-                      <em>1st Workshop on AI in Predictive HEAltH: Architectures for Prevention <strong>(AIPHEA 2026)</strong>, in conjunction with the 2026 IEEE World Congress on Computational Intelligence <strong>(IEEE WCCI 2026)</strong>, Maastricht, The Netherlands. CEUR Workshop Proceedings (to appear), 2026.</em>
-                    </div>
-                    <div class="links">
-                      <span class="btn btn--soon"><i class="fas fa-file-pdf" aria-hidden="true"></i>CEUR Proceedings (to appear)</span>
-                      <button type="button" class="btn btn--bibtex" onclick="toggleBibtex('bib-parkinson')">
-                        <i class="fas fa-quote-right" aria-hidden="true"></i>BibTeX
-                      </button>
-                    </div>
-                    
-                    <div class="abstract-short">
-                      We propose an explainable framework for analyzing unsupervised acoustic patterns in the speech of patients affected by Parkinson's disease using fuzzy linguistic representations. By mapping high-dimensional acoustic feature spaces into interpretable linguistic terms, the approach enables transparent clinical interpretability of vocal biomarkers while retaining descriptive precision.
-                    </div>
+        <!-- Research Interests Card -->
+        <section id="research" class="content-card">
+          <h2 class="section-title">
+            <i class="fas fa-compass"></i>Research Interests
+          </h2>
+          <div class="tags-wrap">
+            <span class="interest-tag"><i class="fas fa-heartbeat"></i>Digital Mental Health (DMH)</span>
+            <span class="interest-tag"><i class="fas fa-lightbulb"></i>Explainable AI (XAI)</span>
+            <span class="interest-tag"><i class="fas fa-project-diagram"></i>Fuzzy Linguistic Models</span>
+            <span class="interest-tag"><i class="fas fa-microphone-alt"></i>Acoustic &amp; Vocal Biomarkers</span>
+            <span class="interest-tag"><i class="fas fa-layer-group"></i>Multimodal Data Fusion</span>
+            <span class="interest-tag"><i class="fas fa-shield-alt"></i>Trustworthy &amp; Human-in-the-Loop AI</span>
+            <span class="interest-tag"><i class="fas fa-chart-line"></i>Wearable Sensor Analytics</span>
+          </div>
+        </section>
 
-                    <div id="bib-parkinson" class="bibtex-box">@inproceedings{creanza2026explaining,
+        <!-- News Card -->
+        <section id="news" class="content-card">
+          <h2 class="section-title">
+            <i class="fas fa-bullhorn"></i>News &amp; Updates
+          </h2>
+          <div class="news-timeline">
+            <div class="news-entry">
+              <div class="news-date-badge">October 2026</div>
+              <div class="news-body">
+                Officially started my Ph.D. program in <strong>Digital Innovation and e-Health</strong> at the University of Bari Aldo Moro!
+              </div>
+            </div>
+
+            <div class="news-entry">
+              <div class="news-date-badge">July 2026</div>
+              <div class="news-body">
+                Graduated with an <strong>M.Sc. in Computer Science (Artificial Intelligence track)</strong> from the University of Bari Aldo Moro.
+              </div>
+            </div>
+
+            <div class="news-entry">
+              <div class="news-date-badge">July 2026</div>
+              <div class="news-body">
+                Our paper <em>"Explaining Unsupervised Acoustic Patterns in Parkinson’s Patients’ Speech through Fuzzy Linguistic Representations"</em> 
+                has been accepted for presentation at <strong>AIPHEA 2026</strong> (co-located with <strong>IEEE WCCI 2026</strong>) in Maastricht, The Netherlands, and will appear in the <strong>CEUR Workshop Proceedings</strong>!
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Featured Publications Card -->
+        <section id="publications" class="content-card">
+          <h2 class="section-title">
+            <i class="fas fa-book-open"></i>Featured Publications
+          </h2>
+
+          <div class="pub-card-custom">
+            <div class="pub-teaser-wrap">
+              <img src="./assets/img/parkinson_fuzzy.png" alt="Parkinson Fuzzy Linguistic Representation" class="pub-teaser-img" />
+              <div class="pub-venue-badge">AIPHEA @ IEEE WCCI 2026</div>
+            </div>
+
+            <div class="pub-content">
+              <div class="pub-title">
+                Explaining Unsupervised Acoustic Patterns in Parkinson’s Patients’ Speech through Fuzzy Linguistic Representations
+              </div>
+              <div class="pub-authors">
+                Gabriella Casalino, Giovanna Castellano, <strong>Maria Creanza*</strong>, Katarzyna Kaczmarek-Majer, Gianluca Zaza
+              </div>
+              <div class="pub-venue">
+                1st Workshop on AI in Predictive HEAltH (AIPHEA 2026), in conjunction with the 2026 IEEE World Congress on Computational Intelligence (IEEE WCCI 2026), Maastricht, The Netherlands. CEUR Workshop Proceedings (to appear), 2026.
+              </div>
+              <div class="pub-abstract">
+                We propose an explainable framework for analyzing unsupervised acoustic patterns in speech recordings of Parkinson's disease patients using fuzzy linguistic representations. Transforming high-dimensional acoustic feature spaces into human-understandable linguistic sets enables transparent clinical interpretability while preserving descriptive richness.
+              </div>
+              <div class="action-btns">
+                <span class="btn-pill btn-accent">
+                  <i class="fas fa-file-pdf"></i>CEUR Proceedings (to appear)
+                </span>
+                <button type="button" class="btn-pill" onclick="toggleBibtex('bib-parkinson')">
+                  <i class="fas fa-quote-right"></i>BibTeX
+                </button>
+              </div>
+
+              <div id="bib-parkinson" class="bibtex-toggle-box">@inproceedings{creanza2026explaining,
   title     = {Explaining Unsupervised Acoustic Patterns in Parkinson's Patients' Speech through Fuzzy Linguistic Representations},
   author    = {Casalino, Gabriella and Castellano, Giovanna and Creanza, Maria and Kaczmarek-Majer, Katarzyna and Zaza, Gianluca},
   booktitle = {Proceedings of the 1st Workshop on AI in Predictive HEAltH: Architectures for Prevention (AIPHEA 2026) co-located with IEEE WCCI 2026},
@@ -278,50 +839,70 @@
   year      = {2026},
   address   = {Maastricht, The Netherlands}
 }</div>
-                  </div>
-                </div>
-              </li>
-            </ol>
-          </div>
-
-          <!-- Education Section -->
-          <h2 id="education" style="margin-top: 35px;">Education</h2>
-          <div style="margin-left: 5px;">
-            <div class="edu-item">
-              <div class="edu-degree">Ph.D. in Digital Innovation and e-Health</div>
-              <div class="edu-institution">University of Bari Aldo Moro, Italy</div>
-              <div class="edu-year">Nov 2026 – Present</div>
-            </div>
-
-            <div class="edu-item">
-              <div class="edu-degree">M.Sc. in Computer Science (Artificial Intelligence track)</div>
-              <div class="edu-institution">University of Bari Aldo Moro, Italy</div>
-              <div class="edu-year">Graduated: July 2026</div>
-            </div>
-
-            <div class="edu-item">
-              <div class="edu-degree">B.Sc. in Computer Science and Software Technologies (ITPS)</div>
-              <div class="edu-institution">University of Bari Aldo Moro, Italy</div>
-              <div class="edu-year">Informatica e Tecnologie per la Produzione del Software &bull; Graduated: October 2024</div>
             </div>
           </div>
+        </section>
 
-        </div>
+        <!-- Education Card -->
+        <section id="education" class="content-card">
+          <h2 class="section-title">
+            <i class="fas fa-graduation-cap"></i>Education
+          </h2>
 
-        <br><br>
-        <p><small>Powered by GitHub Pages. Design inspired by <a href="https://github.com/yaoyao-liu/minimal-light" target="_blank" rel="noopener">Minimal Light</a> theme.</small></p>
-      </section>
+          <div class="edu-timeline">
+            <div class="edu-card">
+              <div class="edu-card-degree">Ph.D. in Digital Innovation and e-Health</div>
+              <div class="edu-card-inst">University of Bari Aldo Moro, Italy</div>
+              <div class="edu-card-date"><i class="far fa-calendar-alt" style="margin-right: 4px;"></i>Started: October 2026 – Present</div>
+            </div>
 
-      <footer></footer>
+            <div class="edu-card">
+              <div class="edu-card-degree">M.Sc. in Computer Science (Artificial Intelligence track)</div>
+              <div class="edu-card-inst">University of Bari Aldo Moro, Italy</div>
+              <div class="edu-card-date"><i class="far fa-calendar-check" style="margin-right: 4px;"></i>Graduated: July 2026</div>
+            </div>
+
+            <div class="edu-card">
+              <div class="edu-card-degree">B.Sc. in Computer Science and Software Technologies (ITPS)</div>
+              <div class="edu-card-inst">Informatica e Tecnologie per la Produzione del Software &bull; University of Bari Aldo Moro, Italy</div>
+              <div class="edu-card-date"><i class="far fa-calendar-check" style="margin-right: 4px;"></i>Graduated: October 2024</div>
+            </div>
+          </div>
+        </section>
+
+      </main>
     </div>
 
-    <!-- Scripts -->
-    <script src="./assets/js/scale.fix.js"></script>
-    <script src="./assets/js/theme.js" type="application/javascript"></script>
-    <script src="./assets/js/news.js" type="application/javascript"></script>
+    <!-- Footer -->
+    <footer>
+      &copy; 2026 Maria Creanza &bull; Hosted on GitHub Pages
+    </footer>
+
+    <!-- Interactive Scripts -->
     <script>
+      // Theme Toggle logic
+      const themeBtn = document.getElementById('theme-btn');
+      const root = document.documentElement;
+
+      function setTheme(theme) {
+        if (theme === 'dark') {
+          root.setAttribute('data-theme', 'dark');
+          root.style.colorScheme = 'dark';
+        } else {
+          root.removeAttribute('data-theme');
+          root.style.colorScheme = 'light';
+        }
+        try { localStorage.setItem('theme', theme); } catch(e){}
+      }
+
+      themeBtn.addEventListener('click', () => {
+        const isDark = root.getAttribute('data-theme') === 'dark';
+        setTheme(isDark ? 'light' : 'dark');
+      });
+
+      // BibTeX Toggle logic
       function toggleBibtex(id) {
-        var el = document.getElementById(id);
+        const el = document.getElementById(id);
         if (el) {
           el.style.display = (el.style.display === 'block') ? 'none' : 'block';
         }
