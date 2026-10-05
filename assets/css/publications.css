@@ -1,0 +1,101 @@
+/* Dark-mode colour overrides for the publications styles.
+ *
+ * This file is layered ON TOP of publications-no-dark-mode.css, which the
+ * layout always loads first and which remains the single source of truth for
+ * all layout, sizing and spacing. Nothing here may change geometry.
+ *
+ * The site is light by default: these rules apply only when the visitor flips
+ * the toggle, which sets data-theme="dark" on <html>. The OS colour-scheme
+ * preference is deliberately NOT consulted.
+ */
+
+:root[data-theme="dark"] {
+  --global-bg-color: #20212b;
+  --global-code-bg-color: rgba(181, 9, 172, 0.15);
+  --global-text-color: #dadbdf;
+  --global-text-color-light: #9a9ba3;
+  --global-theme-color: rgb(62, 183, 240);
+}
+
+/* Link buttons: transparent on the dark page, brighter accents */
+[data-theme="dark"] .publications ol.bibliography li .links .btn {
+  --btn-bg: transparent;
+}
+
+[data-theme="dark"] .publications ol.bibliography li .links .btn:hover {
+  color: #20212b;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+}
+
+[data-theme="dark"] .publications ol.bibliography li .links .btn--pdf     { --btn-color: #ff7a8a; }
+[data-theme="dark"] .publications ol.bibliography li .links .btn--code    { --btn-color: #7ec98a; }
+[data-theme="dark"] .publications ol.bibliography li .links .btn--project { --btn-color: rgb(62, 183, 240); }
+[data-theme="dark"] .publications ol.bibliography li .links .btn--bibtex  { --btn-color: #b8bac2; }
+
+[data-theme="dark"] .publications ol.bibliography li .links .btn:focus {
+  box-shadow: 0 0 0 2px rgba(62, 183, 240, .35);
+}
+
+/* Teaser image frame */
+[data-theme="dark"] .publications ol.bibliography li .teaser {
+  background-color: #2a2b36;
+  border-color: #3a3b47;
+}
+
+/* Short abstract block */
+[data-theme="dark"] .publications ol.bibliography li .abstract-short {
+  color: #c9cad2;
+  background-color: #2a2b36;
+  border-left-color: var(--global-theme-color);
+}
+
+/* Mobile card entries */
+@media print, screen and (max-width: 600px) {
+  [data-theme="dark"] .publications ol.bibliography li {
+    background: #262733;
+    border-color: #3a3b47;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .35);
+  }
+}
+
+/* "More publications" carousel */
+[data-theme="dark"] .pub-card {
+  background: #262733;
+  border-color: #3a3b47;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .pub-card-badge {
+  color: #20212b;
+}
+
+[data-theme="dark"] .pub-card-authors,
+[data-theme="dark"] .pub-card-venue {
+  color: #9a9ba3;
+}
+
+[data-theme="dark"] .pub-card-notes {
+  color: #ff8d7e;
+}
+
+[data-theme="dark"] .pub-carousel-nav {
+  background: #262733;
+}
+
+[data-theme="dark"] .pub-carousel-nav:hover {
+  background: var(--global-theme-color);
+  color: #20212b;
+}
+
+/* Card teaser: keep the white ground, soften the divider */
+[data-theme="dark"] .pub-card-img {
+  border-bottom-color: #3a3b47;
+}
+
+[data-theme="dark"] .pub-card-blurb {
+  color: #c9cad2;
+}
+
+[data-theme="dark"] .publications ol.bibliography li .links .btn--soon {
+  --btn-color: #9a9ba3;
+}

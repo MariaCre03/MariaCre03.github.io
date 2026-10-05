@@ -1,0 +1,13 @@
+# Site settings
+title: Maria Creanza
+description: "Ph.D. Student in Computer Science and Mathematics, University of Bari Aldo Moro."
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://MariaCre03.github.io" # the base hostname & protocol for your site
+
+# Build settings
+markdown: kramdown
+theme: null
+include:
+  - assets
+  - _includes
+  - _layouts

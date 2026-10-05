@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en"
+      data-favicon-light="./assets/img/favicon.png"
+      data-favicon-dark="./assets/img/favicon-dark.png">
+  <head>
+    <title>Maria Creanza | University of Bari Aldo Moro</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Maria Creanza is a Ph.D. student in Computer Science and Mathematics at the University of Bari Aldo Moro. Her research interests include Explainable AI (XAI), Fuzzy Systems, and Biomedical Speech Analysis.">
+    <meta name="keywords" content="Maria Creanza, CILAB, University of Bari, Explainable AI, XAI, Fuzzy Logic, Parkinson, Speech Analysis, Machine Learning">
+    <meta name="author" content="Maria Creanza">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Maria Creanza">
+    <meta property="og:title" content="Maria Creanza | University of Bari Aldo Moro">
+    <meta property="og:description" content="Ph.D. student in Computer Science and Mathematics. Researching Explainable AI, Fuzzy Systems, and Speech Biomarkers for Healthcare.">
+    <meta property="og:image" content="./assets/img/avatar.png">
+
+    <link rel="icon" href="./assets/img/favicon.png" type="image/png" />
+
+    <!-- Dark/Light Theme Preload (Prevents Flash) -->
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.style.colorScheme = 'dark';
+          }
+        } catch (e) { /* private mode fallback */ }
+      })();
+    </script>
+
+    <!-- Icons & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./assets/css/font_sans_serif.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/publications-no-dark-mode.css">
+    <link rel="stylesheet" href="./assets/css/publications.css">
+
+    <style>
+      .bibtex-box {
+        display: none;
+        margin-top: 10px;
+        padding: 10px 14px;
+        background: #f6f8fa;
+        border: 1px solid #d0d7de;
+        border-radius: 6px;
+        font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 0.78rem;
+        line-height: 1.45;
+        white-space: pre-wrap;
+        word-break: break-all;
+        color: #24292f;
+      }
+      [data-theme="dark"] .bibtex-box {
+        background: #1c1d25;
+        border-color: #3a3b47;
+        color: #c9cad2;
+      }
+      .badge-gold {
+        background: #043361;
+        color: #fff;
+        font-size: 0.72rem;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-weight: 600;
+        display: inline-block;
+        margin-top: 6px;
+      }
+      [data-theme="dark"] .badge-gold {
+        background: #3eb7f0;
+        color: #20212b;
+      }
+      .edu-item {
+        margin-bottom: 14px;
+      }
+      .edu-year {
+        font-size: 0.82rem;
+        color: #666;
+        font-weight: 500;
+      }
+      [data-theme="dark"] .edu-year {
+        color: #9a9ba3;
+      }
+      .edu-degree {
+        font-weight: 600;
+        color: #043361;
+      }
+      [data-theme="dark"] .edu-degree {
+        color: #3eb7f0;
+      }
+      .edu-institution {
+        font-size: 0.9rem;
+        color: #444;
+      }
+      [data-theme="dark"] .edu-institution {
+        color: #dadbdf;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Left Profile Header -->
+      <header>
+        <a class="image avatar">
+          <img src="./assets/img/avatar.png" alt="Portrait of Maria Creanza" />
+        </a>
+
+        <h1>Maria Creanza</h1>
+
+        <div style="font-size: 1.05rem; font-weight: 500; margin-top: -6px; margin-bottom: 4px;">Ph.D. Student</div>
+        <a href="https://www.uniba.it/" target="_blank" rel="noopener">
+          <autocolor>University of Bari Aldo Moro</autocolor>
+        </a>
+        <br>
+        <a href="mailto:maria.creanza@uniba.it" class="email">maria.creanza@uniba.it</a>
+
+        <br><br>
+        <div class="social-icons">
+          <!-- Google Scholar -->
+          <a href="https://scholar.google.com/" target="_blank" rel="noopener" title="Google Scholar">
+            <i class="ai ai-google-scholar" style="font-size: 1.25rem"></i>
+          </a>
+
+          <!-- Download CV -->
+          <a href="./assets/files/curriculum_vitae.pdf" download title="Download CV">
+            <i class="ai ai-cv" style="font-size: 1.3rem;"></i>
+          </a>
+
+          <!-- GitHub -->
+          <a href="https://github.com/MariaCre03" target="_blank" rel="noopener" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+
+          <!-- Dark / Light Mode Toggle Button -->
+          <button type="button" class="theme-toggle" aria-pressed="false"
+                  title="Switch to dark mode" aria-label="Switch to dark mode" hidden>
+            <i class="fas fa-moon theme-toggle__moon" aria-hidden="true"></i>
+            <i class="fas fa-sun theme-toggle__sun" aria-hidden="true"></i>
+          </button>
+        </div>
+        <br>
+      </header>
+
+      <!-- Main Content Column -->
+      <section>
+        <div class="intro">
+          <h2 id="about-me">About me</h2>
+
+          <p>
+            I am a Ph.D. student in Computer Science and Mathematics at the 
+            <a href="https://cilab.di.uniba.it/" target="_blank" rel="noopener">Computational Intelligence Laboratory (CILAB)</a>, 
+            Department of Computer Science, 
+            <a href="https://www.uniba.it/" target="_blank" rel="noopener">University of Bari Aldo Moro</a>.
+          </p>
+
+          <p>
+            My research lies at the intersection of <strong>Explainable Artificial Intelligence (XAI)</strong>, 
+            <strong>Computational Intelligence</strong>, and <strong>Healthcare / Digital Medicine</strong>. 
+            In particular, I investigate how fuzzy logic and linguistic representations can render 
+            unsupervised acoustic models transparent and clinically interpretable for speech analysis in 
+            patients affected by neurodegenerative disorders, such as Parkinson's disease.
+          </p>
+
+          <h2 id="research-interests">Research interests</h2>
+          <ul>
+            <li><strong>Explainable AI (XAI):</strong> Fuzzy linguistic representations, interpretable machine learning, human-in-the-loop AI.</li>
+            <li><strong>Biomedical AI & Voice Analysis:</strong> Acoustic patterns, vocal biomarkers, clinical decision-support systems.</li>
+            <li><strong>Computational Intelligence:</strong> Fuzzy sets and systems, unsupervised clustering, pattern recognition.</li>
+          </ul>
+        </div>
+
+        <!-- News Section -->
+        <div class="full-bleed">
+          <h2 id="news">News</h2>
+          <div class="news-list" data-news-limit="5">
+            <div class="news-item">
+              <span class="news-date">July 2026</span>
+              <span>
+                Our paper <em>"Explaining Unsupervised Acoustic Patterns in Parkinson’s Patients’ Speech through Fuzzy Linguistic Representations"</em> 
+                has been accepted for presentation at <strong>AIPHEA 2026</strong> (organized in conjunction with <strong>IEEE WCCI 2026</strong>) in Maastricht, The Netherlands, and will appear in the <strong>CEUR Workshop Proceedings</strong>!
+                <span class="news-links">
+                  <a class="chip chip--web" href="https://aiphea2026.github.io/" target="_blank"><i class="fas fa-globe" aria-hidden="true"></i>Workshop</a>
+                  <a class="chip chip--pdf" href="#pub-parkinson"><i class="fas fa-file-alt" aria-hidden="true"></i>Details</a>
+                </span>
+              </span>
+            </div>
+
+            <div class="news-item">
+              <span class="news-date">November 2025</span>
+              <span>
+                Started my Ph.D. in Computer Science and Mathematics at the University of Bari Aldo Moro under the CILAB research group.
+              </span>
+            </div>
+          </div>
+
+          <!-- Publications Section -->
+          <h2 id="publications" style="margin: 2px 0px -15px;">Featured publications</h2>
+
+          <div class="publications">
+            <ol class="bibliography">
+              <li id="pub-parkinson">
+                <div class="pub-row">
+                  <div class="col-sm-3 abbr" style="position: relative; padding-right: 15px; padding-left: 15px;">
+                    <img src="./assets/img/parkinson_fuzzy.png" alt="Acoustic & Fuzzy Representation Teaser" class="teaser img-fluid z-depth-1" />
+                    <abbr class="badge">AIPHEA @ IEEE WCCI 2026</abbr>
+                  </div>
+                  <div class="col-sm-9" style="position: relative; padding-right: 15px; padding-left: 20px;">
+                    <div class="title">
+                      <a href="#pub-parkinson">Explaining Unsupervised Acoustic Patterns in Parkinson’s Patients’ Speech through Fuzzy Linguistic Representations</a>
+                    </div>
+                    <div class="author">
+                      Gabriella Casalino, Giovanna Castellano, <strong>Maria Creanza*</strong>, Katarzyna Kaczmarek-Majer, Gianluca Zaza
+                    </div>
+                    <div class="periodical">
+                      <em>1st Workshop on AI in Predictive HEAltH: Architectures for Prevention <strong>(AIPHEA 2026)</strong>, in conjunction with the 2026 IEEE World Congress on Computational Intelligence <strong>(IEEE WCCI 2026)</strong>, Maastricht, The Netherlands. CEUR Workshop Proceedings (to appear), 2026.</em>
+                    </div>
+                    <div class="links">
+                      <span class="btn btn--soon"><i class="fas fa-file-pdf" aria-hidden="true"></i>CEUR Proceedings (to appear)</span>
+                      <button type="button" class="btn btn--bibtex" onclick="toggleBibtex('bib-parkinson')">
+                        <i class="fas fa-quote-right" aria-hidden="true"></i>BibTeX
+                      </button>
+                    </div>
+                    
+                    <div class="abstract-short">
+                      We propose an explainable framework for analyzing unsupervised acoustic patterns in the speech of patients affected by Parkinson's disease using fuzzy linguistic representations. By mapping high-dimensional acoustic feature spaces into interpretable linguistic terms, the approach enables transparent clinical interpretability of vocal biomarkers while retaining descriptive precision.
+                    </div>
+
+                    <div id="bib-parkinson" class="bibtex-box">@inproceedings{creanza2026explaining,
+  title     = {Explaining Unsupervised Acoustic Patterns in Parkinson's Patients' Speech through Fuzzy Linguistic Representations},
+  author    = {Casalino, Gabriella and Castellano, Giovanna and Creanza, Maria and Kaczmarek-Majer, Katarzyna and Zaza, Gianluca},
+  booktitle = {Proceedings of the 1st Workshop on AI in Predictive HEAltH: Architectures for Prevention (AIPHEA 2026) co-located with IEEE WCCI 2026},
+  series    = {CEUR Workshop Proceedings},
+  year      = {2026},
+  address   = {Maastricht, The Netherlands}
+}</div>
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Education Section -->
+          <h2 id="education" style="margin-top: 35px;">Education</h2>
+          <div style="margin-left: 5px;">
+            <div class="edu-item">
+              <div class="edu-degree">Ph.D. in Computer Science and Mathematics</div>
+              <div class="edu-institution">University of Bari Aldo Moro, Italy</div>
+              <div class="edu-year">2025 – Present</div>
+            </div>
+
+            <div class="edu-item">
+              <div class="edu-degree">M.Sc. in Computer Science</div>
+              <div class="edu-institution">University of Bari Aldo Moro, Italy</div>
+            </div>
+
+            <div class="edu-item">
+              <div class="edu-degree">B.Sc. in Computer Science</div>
+              <div class="edu-institution">University of Bari Aldo Moro, Italy</div>
+            </div>
+          </div>
+
+        </div>
+
+        <br><br>
+        <p><small>Powered by GitHub Pages. Design inspired by <a href="https://github.com/yaoyao-liu/minimal-light" target="_blank" rel="noopener">Minimal Light</a> theme.</small></p>
+      </section>
+
+      <footer></footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./assets/js/scale.fix.js"></script>
+    <script src="./assets/js/theme.js" type="application/javascript"></script>
+    <script src="./assets/js/news.js" type="application/javascript"></script>
+    <script>
+      function toggleBibtex(id) {
+        var el = document.getElementById(id);
+        if (el) {
+          el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+        }
+      }
+    </script>
+  </body>
+</html>

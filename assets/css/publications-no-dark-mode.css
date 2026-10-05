@@ -1,0 +1,400 @@
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.badge {
+    color: #fff !important;
+    border-radius: 0.125rem;
+    -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+:root { --global-bg-color: #ffffff; --global-code-bg-color: rgba(181, 9, 172, 0.05); --global-text-color: #000000; --global-text-color-light: #828282; --global-theme-color: #002D72; --global-hover-color: #ffb81c; --global-footer-bg-color: #1c1c1c; --global-footer-text-color: #e8e8e8; --global-footer-link-color: #ffffff; --global-distill-app-color: #828282; }
+
+blockquote { background: var(--global-bg-color); border-left: 2px solid var(--global-theme-color); margin: 1.5em 10px; padding: 0.5em 10px; font-size: 1.2rem; }
+
+@media print, screen and (min-width: 480px) {.col-sm-9 {width: 100%;}}
+
+.publications { margin-top: 2rem; }
+
+.publications h1 { color: var(--global-theme-color); font-size: 2rem; text-align: center; margin-top: 1em; margin-bottom: 1em; }
+
+.publications h2 { margin-bottom: 1rem; }
+
+.publications h2 span { font-size: 1.5rem; }
+
+.publications h2.year { color: #e8e8e8; border-top: 1px solid #e8e8e8; margin-top: 2rem; margin-bottom: 0rem; text-align: right; }
+
+.publications ol.bibliography { list-style: none; padding: 0; margin-top: 0; }
+
+.publications ol.bibliography li { min-height: 110px; margin-bottom: 0.5rem; }
+
+.publications ol.bibliography li .abbr { height: 8rem; margin-bottom: 0.5rem; }
+
+.publications ol.bibliography li .abbr abbr { display: inline-block; background-color: var(--global-theme-color); padding-left: 1rem; padding-right: 1rem; position: absolute; top: 8px; left: 16px; }
+
+.publications ol.bibliography li .abbr abbr a { color: white; }
+
+.publications ol.bibliography li .abbr abbr a:hover { text-decoration: none; }
+
+.publications ol.bibliography li .abbr .award { color: var(--global-theme-color) !important; border: 1px solid var(--global-theme-color); }
+
+.publications ol.bibliography li .title { font-weight: bolder; }
+
+.publications ol.bibliography li .author a { border-bottom: 1px var(--global-theme-color); }
+
+.publications ol.bibliography li .author a:hover { border-bottom-style: solid; text-decoration: none; }
+
+.publications ol.bibliography li .author > em { border-bottom: 1px solid; font-style: normal; }
+
+/* === Base compact button (neutral, variable-driven) === */
+.publications ol.bibliography li .links .btn {
+  --btn-color: var(--global-theme-color, #002D72);
+  --btn-bg: transparent;
+  --btn-border: var(--btn-color);
+
+  /* Same chip treatment as the news links, one size up. */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 2px 11px;
+  margin: 2px 5px 2px 0;
+  border-radius: 999px;
+  line-height: 1.6;
+  text-decoration: none;
+  white-space: nowrap;
+
+  color: var(--btn-color);
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+
+  transition: background-color .2s, color .2s, border-color .2s, box-shadow .2s;
+}
+
+.publications ol.bibliography li .links .btn i {
+  font-size: 0.85em;
+}
+
+/* Hover uses the same variable */
+.publications ol.bibliography li .links .btn:hover {
+  background: var(--btn-color);
+  color: #fff;
+  border-color: var(--btn-color);
+  box-shadow: 0 1px 3px rgba(0,0,0,.15);
+}
+
+/* === Variants just set the variable (no specificity fight) === */
+.publications ol.bibliography li .links .btn--pdf    { --btn-color: #b00020; }
+.publications ol.bibliography li .links .btn--code   { --btn-color: #1b5e20; }
+.publications ol.bibliography li .links .btn--project{ --btn-color: var(--global-theme-color, #002D72); }
+.publications ol.bibliography li .links .btn--bibtex { --btn-color: #424242; }
+
+/* Focus ring */
+.publications ol.bibliography li .links .btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0,45,114,.15);
+}
+
+.publications ol.bibliography li .hidden { font-size: 0.875rem; max-height: 0px; overflow: hidden; text-align: justify; -webkit-transition: 0.15s ease; -moz-transition: 0.15s ease; -ms-transition: 0.15s ease; -o-transition: 0.15s ease; transition: all 0.15s ease; }
+
+.publications ol.bibliography li .hidden p { line-height: 1.4em; margin: 10px; }
+
+.publications ol.bibliography li .hidden pre { font-size: 1em; line-height: 1.4em; padding: 10px; }
+
+.publications ol.bibliography li .hidden.open { max-height: 100em; -webkit-transition: 0.15s ease; -moz-transition: 0.15s ease; -ms-transition: 0.15s ease; -o-transition: 0.15s ease; transition: all 0.15s ease; }
+
+.publications ol.bibliography li div.abstract.hidden { border: dashed 1px var(--global-bg-color); }
+
+.publications ol.bibliography li div.abstract.hidden.open { border-color: var(--global-text-color); }
+
+/* --- Publication teaser image: clean box frame, no shadow --- */
+.publications ol.bibliography li .teaser {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  aspect-ratio: 16 / 9;        /* keeps a consistent shape, adjust if needed */
+  object-fit: contain;          /* show entire image */
+  background-color: #ffffff;    /* neutral background */
+  border: 1px solid #e5e5e5;    /* subtle frame instead of shadow */
+  border-radius: 8px;
+  margin: 5px auto;             /* center within its column */
+}
+
+/* The left “abbr” column was constraining/clipping height */
+.publications ol.bibliography li .abbr {
+  height: auto;           /* was 8rem; remove to avoid clipping */
+  overflow: visible;      /* ensure no cutoffs */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 15px;
+}
+
+/* --- Short abstract block under publication links --- */
+.publications ol.bibliography li .abstract-short {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #333;                     /* readable on light background */
+  background-color: #f8f9fa;       /* subtle distinction */
+  border-left: 3px solid var(--global-theme-color);
+  padding: 8px 10px;
+  border-radius: 4px;
+}
+
+.publications ol.bibliography li .periodical {
+  margin-bottom: 0.4em;
+}
+
+/* === Mobile publications: card-style entries === */
+@media print, screen and (max-width: 600px) {
+  .publications ol.bibliography li .links .btn {
+    font-size: 0.8rem;
+    padding: 3px 11px;      /* marginally taller for touch */
+  }
+
+  .publications ol.bibliography {
+    gap: 0;
+  }
+
+  .publications ol.bibliography li {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 12px 14px 14px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  }
+
+  /* stack: Title → Image → rest */
+  .pub-row {
+    display: flex;
+    flex-direction: column;
+  }
+  .pub-row .col-sm-9 { order: 1; width: 100%; padding: 0 !important; }
+  .pub-row .abbr     { order: 2; width: 100%; padding: 0 !important; }
+
+  /* image container as positioning context */
+  .publications ol.bibliography li .abbr {
+    position: relative;
+    margin: 8px 0 4px;
+    text-align: center;
+  }
+
+  /* image is now flat inside the card, no extra shadow needed */
+  .publications ol.bibliography li .teaser {
+    border: none;
+    background: none;
+    aspect-ratio: auto;
+    max-width: none;
+    width: 100%;
+    height: auto;
+  }
+
+  /* keep the badge on top-left of the image */
+  .publications ol.bibliography li .abbr abbr {
+    position: absolute !important;
+    top: 6px;
+    left: 10px;
+    z-index: 2;
+  }
+
+  /* tiny spacing under conference line */
+  .publications ol.bibliography li .periodical {
+    margin-bottom: 6px;
+  }
+}
+
+
+
+
+/* === "More publications" expander + carousel === */
+
+/* The <details> works without JavaScript: summary toggles, the carousel is a
+   native horizontal scroller with snap points. The prev/next buttons are a
+   JS-only enhancement (unhidden by pubs-carousel.js). */
+.pub-extra {
+  margin: 10px 0 0;
+}
+
+/* Subheader: clearly subordinate to the "Featured publications" h2 */
+.pub-extra-heading {
+  margin: 0 0 2px;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.pub-carousel-wrap {
+  position: relative;
+  margin-top: 10px;
+}
+
+.pub-carousel {
+  display: flex;
+  gap: 14px;
+  margin: 0;
+  padding: 8px 4px 14px;            /* bottom room for the scrollbar */
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.pub-card {
+  flex: 0 0 230px;
+  min-height: 240px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px;
+  text-align: left;
+  background: var(--global-bg-color, #fff);
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.pub-card-badge {
+  align-self: flex-start;
+  padding: 1px 8px;
+  border-radius: 4px;
+  background-color: var(--global-theme-color, #002D72);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.pub-card-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.pub-card-title a {
+  color: var(--global-theme-color, #002D72);
+  text-decoration: none;
+}
+
+.pub-card-title a:hover {
+  text-decoration: underline;
+}
+
+.pub-card-authors,
+.pub-card-venue {
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: var(--global-text-color-light, #828282);
+}
+
+.pub-card-notes {
+  font-size: 0.74rem;
+  font-style: italic;
+  font-weight: 600;
+  color: #e74d3c;
+}
+
+.pub-card-links {
+  margin-top: auto;                 /* chips sit at the card bottom */
+  padding-top: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+/* Prev/next buttons (revealed by JS, desktop only) */
+.pub-carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid var(--global-theme-color, #002D72);
+  border-radius: 50%;
+  background: var(--global-bg-color, #fff);
+  color: var(--global-theme-color, #002D72);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, opacity .2s ease;
+}
+
+.pub-carousel-nav:hover {
+  background: var(--global-theme-color, #002D72);
+  color: #fff;
+}
+
+.pub-carousel-nav[disabled] {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.pub-carousel-nav--prev { left: -12px; }
+.pub-carousel-nav--next { right: -12px; }
+
+/* Touch layouts: swipe instead of buttons, near-full-width cards */
+@media print, screen and (max-width: 600px) {
+  .pub-carousel-nav { display: none !important; }
+
+  .pub-card {
+    flex-basis: 66vw;
+  }
+}
+
+/* Teaser banner at the top of a carousel card. Bleeds to the card edges
+   (negative margins counter the card padding). Kept on a white ground in both
+   themes so the paper figures stay legible. */
+.pub-card-img {
+  box-sizing: border-box;
+  width: calc(100% + 32px);
+  max-width: none;
+  margin: -14px -16px 4px;
+  height: 108px;
+  padding: 8px 10px;
+  object-fit: contain;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  border-radius: 9px 9px 0 0;
+}
+
+/* One-line takeaway on a carousel card. Clamped so long blurbs cannot
+   stretch the card. */
+.pub-card-blurb {
+  font-size: 0.74rem;
+  line-height: 1.45;
+  color: var(--global-text-color, #000);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+/* Non-link marker in a publication's links row (e.g. "arXiv coming soon") */
+.publications ol.bibliography li .links .btn--soon {
+  --btn-color: #828282;
+  border-style: dashed;
+  cursor: default;
+}
+
+.publications ol.bibliography li .links .btn--soon:hover {
+  background: var(--btn-bg);
+  color: var(--btn-color);
+  box-shadow: none;
+}
