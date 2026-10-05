@@ -46,39 +46,35 @@
       :root {
         --bg-body: #f8fafc;
         --bg-card: #ffffff;
-        --text-primary: #1e293b;
-        --text-secondary: #475569;
+        --text-primary: #0f172a;
+        --text-secondary: #334155;
         --text-muted: #64748b;
-        --primary: #006677;
-        --primary-hover: #004d5a;
-        --primary-light: #e0f2f1;
-        --accent: #0284c7;
+        --primary: #0284c7; /* Sky blue / azzurro cielo vivace e leggibile */
+        --primary-hover: #0369a1;
+        --primary-light: #e0f2fe; /* Azzurro cielo pastello per badge e sfondi */
+        --accent: #38bdf8;
         --border-color: #e2e8f0;
-        --card-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.06);
+        --card-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.05);
         --header-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-        --chip-bg: #f1f5f9;
-        --code-bg: #f1f5f9;
-        --gold-badge: #d97706;
-        --gold-bg: #fef3c7;
+        --chip-bg: #f0f9ff;
+        --code-bg: #f0f9ff;
       }
 
       [data-theme="dark"] {
-        --bg-body: #0b1120;
-        --bg-card: #131c31;
-        --text-primary: #f1f5f9;
+        --bg-body: #0b1329;
+        --bg-card: #131f37;
+        --text-primary: #f8fafc;
         --text-secondary: #cbd5e1;
         --text-muted: #94a3b8;
-        --primary: #2dd4bf;
-        --primary-hover: #5eead4;
-        --primary-light: rgba(45, 212, 191, 0.12);
-        --accent: #38bdf8;
-        --border-color: #1e293b;
-        --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.35);
+        --primary: #38bdf8; /* Azzurro cielo luminoso in dark mode */
+        --primary-hover: #7dd3fc;
+        --primary-light: rgba(56, 189, 248, 0.15);
+        --accent: #0ea5e9;
+        --border-color: #1e2e4a;
+        --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
         --header-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-        --chip-bg: #1e293b;
-        --code-bg: #1e293b;
-        --gold-badge: #fbbf24;
-        --gold-bg: rgba(251, 191, 36, 0.15);
+        --chip-bg: #162644;
+        --code-bg: #162644;
       }
 
       * {
@@ -217,10 +213,10 @@
         border-radius: 50%;
         object-fit: cover;
         border: 3px solid var(--primary);
-        box-shadow: 0 6px 16px rgba(0, 102, 119, 0.15);
+        box-shadow: 0 6px 16px rgba(2, 132, 199, 0.22);
       }
       [data-theme="dark"] .avatar-img {
-        box-shadow: 0 6px 20px rgba(45, 212, 191, 0.25);
+        box-shadow: 0 6px 20px rgba(56, 189, 248, 0.28);
       }
 
       .sidebar h1 {
