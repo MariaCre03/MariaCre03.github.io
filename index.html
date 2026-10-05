@@ -589,17 +589,6 @@
         font-weight: 700;
         color: var(--text-primary);
       }
-      .badge-grade {
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-        background: var(--gold-bg);
-        color: var(--gold-badge);
-        font-size: 0.76rem;
-        font-weight: 700;
-        padding: 3px 9px;
-        border-radius: 6px;
-      }
       .edu-card-inst {
         font-size: 0.88rem;
         color: var(--text-secondary);
@@ -622,37 +611,6 @@
       .edu-thesis-title {
         font-weight: 600;
         color: var(--text-primary);
-      }
-
-      /* Technical Highlights */
-      .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 14px;
-        margin-top: 14px;
-      }
-      .skill-block {
-        background: var(--chip-bg);
-        border: 1px solid var(--border-color);
-        border-radius: 12px;
-        padding: 14px 16px;
-      }
-      .skill-block-title {
-        font-size: 0.86rem;
-        font-weight: 700;
-        color: var(--text-primary);
-        margin-bottom: 6px;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .skill-block-title i {
-        color: var(--primary);
-      }
-      .skill-block-tags {
-        font-size: 0.82rem;
-        color: var(--text-secondary);
-        line-height: 1.45;
       }
 
       /* Footer */
@@ -831,26 +789,6 @@
             <span class="interest-tag"><i class="fas fa-cogs"></i>Self-Supervised Learning (SSL)</span>
             <span class="interest-tag"><i class="fas fa-shield-alt"></i>Trustworthy &amp; Human-in-the-Loop AI</span>
           </div>
-
-          <div class="skills-grid">
-            <div class="skill-block">
-              <div class="skill-block-title">
-                <i class="fas fa-laptop-code"></i>Deep Learning &amp; AI
-              </div>
-              <div class="skill-block-tags">
-                PyTorch, Transformers, State Space Models, Scikit-Learn, Self-Supervised Learning, LIME, SHAP, Fuzzy Logic
-              </div>
-            </div>
-
-            <div class="skill-block">
-              <div class="skill-block-title">
-                <i class="fas fa-robot"></i>Generative AI &amp; NLP
-              </div>
-              <div class="skill-block-tags">
-                LangChain, FAISS (Vector Stores), Ragas evaluation, Embeddings, BERT, Python
-              </div>
-            </div>
-          </div>
         </section>
 
         <!-- Featured Publications Card -->
@@ -923,16 +861,12 @@
             <div class="edu-card">
               <div class="edu-header-row">
                 <div class="edu-card-degree">M.Sc. in Computer Science (Artificial Intelligence track)</div>
-                <span class="badge-grade"><i class="fas fa-award"></i>110/110 con Lode</span>
               </div>
               <div class="edu-card-inst">University of Bari Aldo Moro, Italy</div>
               <div class="edu-card-date"><i class="far fa-calendar-check" style="margin-right: 4px;"></i>Graduated: July 2026</div>
               <div class="edu-thesis-box">
                 <div class="edu-thesis-title">Master's Thesis: Study and Implementation of Machine Learning Techniques for Mental Health Monitoring and Assessment</div>
-                <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">
-                  <strong>Supervisors:</strong> Dr. Gabriella Casalino, Prof. Gennaro Vessio, Dr. Gianluca Zaza
-                </div>
-                <p style="font-size: 0.83rem; margin: 4px 0 0 0;">
+                <p style="font-size: 0.83rem; margin: 6px 0 0 0;">
                   Investigated Self-Supervised Learning (SSL) and modern sequence models (Transformers, State Space Models) for continuous stress detection and mood monitoring using wearable biosignal time-series (HRV, EDA) and Explainable AI.
                 </p>
               </div>
@@ -942,16 +876,12 @@
             <div class="edu-card">
               <div class="edu-header-row">
                 <div class="edu-card-degree">B.Sc. in Computer Science and Software Technologies (ITPS)</div>
-                <span class="badge-grade" style="background: var(--chip-bg); color: var(--text-secondary);"><i class="fas fa-check-circle"></i>101/110</span>
               </div>
               <div class="edu-card-inst">Informatica e Tecnologie per la Produzione del Software &bull; University of Bari Aldo Moro, Italy</div>
               <div class="edu-card-date"><i class="far fa-calendar-check" style="margin-right: 4px;"></i>Graduated: October 2024</div>
               <div class="edu-thesis-box">
                 <div class="edu-thesis-title">Bachelor's Thesis: Applicazione di Modelli di Vision Transformer per la Predizione dell'Anemia su Dataset Eterogenei</div>
-                <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">
-                  <strong>Supervisors:</strong> Prof. Giovanni Dimauro, Dr. Nunzia Lomonte
-                </div>
-                <p style="font-size: 0.83rem; margin: 4px 0 0 0;">
+                <p style="font-size: 0.83rem; margin: 6px 0 0 0;">
                   Designed a non-invasive screening pipeline using Vision Transformers (ViT) on palpebral conjunctiva photography across heterogeneous international cohorts, achieving 82% accuracy in binary anemia classification.
                 </p>
               </div>
@@ -975,7 +905,7 @@
             <div class="news-entry">
               <div class="news-date-badge">July 2026</div>
               <div class="news-body">
-                Graduated with an <strong>M.Sc. in Computer Science (Artificial Intelligence track)</strong> from the University of Bari Aldo Moro with <strong>110/110 con Lode</strong>!
+                Graduated with an <strong>M.Sc. in Computer Science (Artificial Intelligence track)</strong> from the University of Bari Aldo Moro.
               </div>
             </div>
 
